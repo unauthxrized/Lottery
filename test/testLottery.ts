@@ -72,6 +72,9 @@ describe("Initial Tests", async() => {
 
         const balanceOflottery = await stolotoCoin.balanceOf(lottery.address);
 
+        // in perfect - balance is zero
+        //expect(balanceOflottery).to.equal(0);
+        
         expect(balanceOflottery).to.equal(ethers.utils.parseUnits("150"));
     })
 })
