@@ -43,12 +43,14 @@ contract Lottery is VRFConsumerBaseV2 {
         requestId = _requestId;
         uint256 winAmount = _STOLOTOCOIN.balanceOf(address(this)) / 5;
         uint256 round;
+        uint256 supply = _TICKET.totalSupply();
 
         console.log("array l: %s", _randomWords.length);
 
         while (round < _randomWords.length) {
-            uint256 random = _randomWords[round] % (_TICKET.totalSupply() + 1);
+            uint256 random = _randomWords[round] % supply;
             address ownerOf = _TICKET.ownerOf(random);
+            console.log("owner is %s", ownerOf);
             _STOLOTOCOIN.transfer(ownerOf, winAmount);
             round++;
         }

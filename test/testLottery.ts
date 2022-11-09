@@ -74,7 +74,14 @@ describe("Initial Tests", async() => {
 
         // in perfect - balance is zero
         //expect(balanceOflottery).to.equal(0);
+
+        const ownerOfZero = await ticket.ownerOf(0);
+        const supply = await ticket.totalSupply();
+        console.log(supply);
         
-        expect(balanceOflottery).to.equal(ethers.utils.parseUnits("150"));
+        console.log(ownerOfZero);
+        
+
+        expect(balanceOflottery).to.equal(ethers.utils.parseUnits("0"));
     })
 })
